@@ -80,3 +80,22 @@ git push //会生成新的commitID，原来的提交历史仍然存在
 初始化：git submodule update --init
 
 切换分支 git submodule foreach git checkout dev
+
+
+## rebase
+合并commit
+
+git rebase -i commitID(要合并目标的前一个commit)/HEAD~n(n=>合并几个commit)
+
+会显示n次commit历史，pick 使用提交,squash 融合到上一个提交。如果几个commit都是pick，则不合并。
+pick A;pick B;pick C
+
+还可以更换commit的顺序： pick A;pick C;pick B
+
+如果更改远程 git push origin branch --force
+
+git log
+
+git rebase --abort
+
+git rebase master//在master最新commit点上提交当前分支的commit，不会按照commit时间重排顺序，且当前分支之前的commit hash会改变
